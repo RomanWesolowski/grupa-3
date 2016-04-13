@@ -1,5 +1,5 @@
 html, body{
-    height:100%;
+    height:100vh;
 }
 body {
     background-color: #222;
@@ -7,8 +7,8 @@ body {
 
 .over {
     overflow: auto;
-    min-height: 330px;
-    max-height: 350px;
+    min-height: 290px;
+    max-height: 330px;
 }
 aside .over{
     min-height:0 !important;
@@ -31,6 +31,14 @@ table tr:first-child td{
     transform: translate(-50%, -50%) !important;
     position:fixed;
 }
+.navbar{
+    position: fixed;
+    width: 100% !important;
+    z-index: 99;
+}
+.modal-backdrop{
+    z-index:0 !important; 
+}
 .navbar-inverse{
     background-color: #337ab7;
 }
@@ -43,4 +51,16 @@ table tr:first-child td{
 }
 .cbalink{
     display:none !important;
+}
+section.row{
+    padding-top:100px;
+    height:100vh;
+}
+.form-group {
+    margin-top: 15px;
+    margin-bottom: 15px;
+}
+footer div{
+    bottom: 20px !important;
+    position: fixed !important;
 }
