@@ -1,15 +1,5 @@
-﻿<?php//<Roman> 
-    if($_POST['zalogowany']){
-        session_start();
-        $_SESSION["zalogowany"] = true;
-    } elseif($_POST['wylogowany']){
-        $_SESSION["zalogowany"] = false;
-        $_SESSION["wylogowany"] = true;
-    }
-    
-    include('msgScript.php');//</Roman>
-?>
-<!DOCTYPE html>
+<?php session_start(); ?>
+﻿<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
@@ -18,6 +8,16 @@
     <link href="css/main.css" rel="stylesheet">
 </head>
     <body>
+        <?php//<Roman> 
+            /*if(isset($_POST['zalogowany'])){
+                $_SESSION["zalogowany"] = true;
+            } else if($_POST['wylogowany']){
+                $_SESSION["zalogowany"] = false;
+                $_SESSION["wylogowany"] = true;
+            }
+
+            include('msgScript.php')*/;//</Roman>
+        ?>
         <nav class="navbar navbar-inverse">
             <!--- zmiana testowaa -->
             <div class="container">
