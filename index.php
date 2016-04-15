@@ -1,23 +1,81 @@
-<?php session_start(); ?>
-﻿<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="pl">
 <head>
     <meta charset="UTF-8">
     <title>Gadaczek</title>
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/main.css" rel="stylesheet">
+    <script>
+        function setScrollBottom()
+        {
+            var scrolledDiv = document.getElementById('okno_czatu');
+            scrolledDiv.scrollTop = scrolledDiv.scrollHeight;
+        }
+    </script>
 </head>
-    <body>
-        <?php//<Roman> 
-            /*if(isset($_POST['zalogowany'])){
-                $_SESSION["zalogowany"] = true;
-            } else if($_POST['wylogowany']){
-                $_SESSION["zalogowany"] = false;
-                $_SESSION["wylogowany"] = true;
-            }
 
-            include('msgScript.php')*/;//</Roman>
-        ?>
+<?php
+require('php/connect.php');
+$dbxx = connect_db();
+
+if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
+
+    $email = $_POST['l_email'];
+    $password = $_POST['l_password'];
+
+    $email = htmlentities($email, ENT_QUOTES, "UTF-8");
+    $password = htmlentities($password, ENT_QUOTES, "UTF-8");
+
+    if (empty($_SESSION) && $sql = @$dbxx->query(sprintf("SELECT * FROM USER WHERE EMAIL='%s' AND PASSWORD='%s'",
+        mysqli_real_escape_string($dbxx, $email),
+        mysqli_real_escape_string($dbxx, $password)))){
+
+        $ilu_userow = $sql->num_rows;
+        if($ilu_userow>0){
+
+            session_start();
+            $sid = session_id();
+
+            $_SESSION['zalogowany'] = true;
+            $person = mysqli_fetch_assoc($sql);
+                /* z BD mamy:
+                 * ID_USER
+                 * IMIE
+                 * NAZWISKO
+                 * EMAIL
+                 * PASSWORD
+                 * FLAGA
+                 */
+
+                /* z SESSION mamy:
+                 * zalogowany
+                 * id_user
+                 * imie
+                 * nazwisko
+                 * email
+                 * dialog - tu jest cala rozmowa
+                 */
+
+                /* z POST mamy:
+                 * l_email
+                 * l_password
+                 */
+
+                 /* zmienne:
+                  * $sid - tu jest id sesji
+                  */
+
+        }
+    }
+    if($_POST['wylogowany']){
+        $_SESSION["zalogowany"] = false;
+        $_SESSION["wylogowany"] = true;
+    }
+}
+    include('php/msgScript.php');
+?>
+    <body onload="setScrollBottom();">
+
         <nav class="navbar navbar-inverse">
             <!--- zmiana testowaa -->
             <div class="container">
@@ -33,23 +91,23 @@
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="nav navbar-nav navbar-right">
                         <!-- Przy zalogowanym użytkowniku będzie widać tylko nazwa i wyloguj w postaci button'ów -->
-                        
+
                         <!-- Button to register -->
                         <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#reg">Zarejestruj</button>
-   
-                        <?php /*Roman*/ include('registerModal.php'); ?>
-                        
+
+                        <?php /*Roman*/ include('php/registerModal.php'); ?>
+
                         <!-- Button to log in -->
                         <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
 
-                        <?php /*Roman*/ include('loginModal.php'); ?>
-                        
+                        <?php /*Roman*/ include('php/loginModal.php'); ?>
+
                         <section class="hide">
                             <!-- Button do profilu użytkownika -->
                             <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
-                            
-                            <?php /*Roman*/ include('profilModal.php'); ?>
-                            
+
+                            <?php /*Roman*/ include('php/profilModal.php'); ?>
+
                             <!-- Button to logout -->
                             <button type="button" class="btn btn-primary navbar-btn">Wyloguj</button>
                         </section>
@@ -57,49 +115,16 @@
                 </div>
             </div>
         </nav>
-        
+
         <!-- Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa -->
         <div class="container">
             <section class="row">
-                
-                <?php /*Roman*/ include('dialog.php'); ?>
-                
+
+                <?php /*Roman*/ include('php/dialog.php'); ?>
+
                 <!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
-                <aside class="col-sm-12 col-md-offset-1 col-md-3">
-                    <div class="panel panel-primary">
-                        <div class="panel-heading">
-                            <div class="row">
-                            <div class="col-xs-4 col-sm-3 col-md-2 col-lg-3"><h4>Kontakty</h4></div>
-                            <div class="col-xs-offset-1 col-xs-7  col-sm-offset-5 col-sm-3 col-md-offset-2 col-md-5 col-lg-offset-2 col-lg-5">
-                            <form class="form-inline hidden">
-                                <div class="form-group">
-                                    <input type="search" class="form-control" id="search" placeholder="Szukaj znajomego">
-                                </div>
-                            </form>
-                            </div>
-                            </div>
-                        </div>
-                        <div class="panel-body over">
-                            <div class="table-responsive">
-                                <table class="table table-hover">
-                                    <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
-                                        <tr>
-                                            <td>Andrzej</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Krystian</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Michał</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Roman</td>
-                                        </tr>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                </aside>
+                <?php /*Roman*/ include('php/kontakty.php'); ?>
+
                 <footer class="col-md-12">
             <div class="container text-center" style="color: #FFF">
                 <hr>
@@ -113,9 +138,9 @@
         </footer>
             </section>
         </div>
-        
-        
-        
+
+
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -124,5 +149,6 @@
             document.getElementById('bmone2n-1276.1.1.1').id = "reklama";
             document.getElementById('bmone2t-1276.1.1.1').id = "reklama";
         </script>
+
     </body>
 </html>
