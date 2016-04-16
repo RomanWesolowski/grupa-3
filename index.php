@@ -14,6 +14,10 @@
     </script>
 </head>
 
+<?php
+    //Sprawdzanie czy uzytkownik ma nazwiazana sesje
+    require('php/session.php');
+?>
 
     <body onload="setScrollBottom();">
 
