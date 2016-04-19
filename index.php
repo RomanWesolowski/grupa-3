@@ -25,31 +25,31 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
 
     $email = htmlentities($email, ENT_QUOTES, "UTF-8");
     $password = htmlentities($password, ENT_QUOTES, "UTF-8");
-    
+
     if (empty($_SESSION) && $sql = @$dbxx->query(sprintf("SELECT * FROM USER WHERE EMAIL='%s' AND PASSWORD='%s'",
         mysqli_real_escape_string($dbxx, $email),
         mysqli_real_escape_string($dbxx, $password)))){
         $ilu_userow = $sql->num_rows;
         if($ilu_userow>0){
-            
-            session_start(); 
+
+            session_start();
             $sid = session_id();
-            
+
             $_SESSION['zalogowany'] = true;
-            
+
             $person = mysqli_fetch_assoc($sql);
                 $id_user = $person['ID_USER'];
                 $imie = $person['IMIE'];
                 $nazwisko = $person['NAZWISKO'];
                 $email = $person['email'];
                 $password = $person['password'];
-                
+
                 $_SESSION['imie'] = $imie;
                 $_SESSION['nazwisko'] = $nazwisko;
                 $_SESSION['email'] = $email;
                 $_SESSION['password'] = $password;
                 $_SESSION['id_user'] = $id_user;
-                
+
                 /* z SESSION mamy:
                  * zalogowany
                  * id_user
@@ -58,16 +58,16 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
                  * email
                  * dialog - tu jest cala rozmowa
                  */
-            
+
                 /* z POST mamy:
                  * l_email
                  * l_password
                  */
-            
+
                  /* zmienne:
                   * $sid - tu jest id sesji
                   */
-            
+
         }
     }
     if($_POST['wylogowany']){
@@ -94,23 +94,23 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="nav navbar-nav navbar-right">
                         <!-- Przy zalogowanym użytkowniku będzie widać tylko nazwa i wyloguj w postaci button'ów -->
-                        
+
                         <!-- Button to register -->
                         <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#reg">Zarejestruj</button>
-   
+
                         <?php /*Roman*/ include('registerModal.php'); ?>
-                        
+
                         <!-- Button to log in -->
                         <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
 
                         <?php /*Roman*/ include('loginModal.php'); ?>
-                        
+
                         <section class="hide">
                             <!-- Button do profilu użytkownika -->
                             <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
-                            
+
                             <?php /*Roman*/ include('profilModal.php'); ?>
-                            
+
                             <!-- Button to logout -->
                             <button type="button" class="btn btn-primary navbar-btn">Wyloguj</button>
                         </section>
@@ -118,16 +118,16 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
                 </div>
             </div>
         </nav>
-        
+
         <!-- Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa -->
         <div class="container">
             <section class="row">
-                
+
                 <?php /*Roman*/ include('dialog.php'); ?>
-                
+
                 <!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
-                <?php /*Roman*/ include('kontakty.php'); ?>
-                
+                <?php /*Roman*/ include('kontaktyView.php'); ?>
+
                 <footer class="col-md-12">
             <div class="container text-center" style="color: #FFF">
                 <hr>
@@ -141,9 +141,9 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
         </footer>
             </section>
         </div>
-        
-        
-        
+
+
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
