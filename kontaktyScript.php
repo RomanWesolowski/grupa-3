@@ -1,23 +1,24 @@
 <?php
-  include("connection.php");
+  require('connect.php');
+  $baza = connect_db();
 
   $id_test_user = 3;
-
-  $zapytanie =
+  $wynik = @$baza->query(sprintf(
       "SELECT IMIE FROM USER
       WHERE ID_USER IN
         (SELECT za.ID_USER
         FROM ZNAJOMI za
-        WHERE za.ID_ZNAJOMY = '".$id_test_user."')".
-      "OR ID_USER IN
-  	    (SELECT zb.ID_ZNAJOMY
+        WHERE za.ID_ZNAJOMY = '%d')
+      OR ID_USER IN
+	      (SELECT zb.ID_ZNAJOMY
         FROM ZNAJOMI zb
-        WHERE zb.ID_USER ='".$id_test_user."');";
+        WHERE zb.ID_USER = '%d')",
+        $id_test_user, $id_test_user
+    ));
 
-  $wynik = db_connection($zapytanie);
-
-  while($wiersz = mysql_fetch_array($wynik)){
-    echo $wiersz['IMIE'];
-    echo 'petla';
+  $ilu_userow = $wynik->num_rows;
+  while($ilu_userow>0){
+    $friend = mysqli_fetch_assoc($wynik);
+    echo "$friend";
   }
  ?>
