@@ -4,7 +4,7 @@
 
   $id_test_user = 3;
   $zapytanie =
-      "SELECT IMIE FROM USER
+      "SELECT IMIE, NAZWISKO FROM USER
       WHERE ID_USER IN
         (SELECT za.ID_USER
         FROM ZNAJOMI za
@@ -14,12 +14,11 @@
         FROM ZNAJOMI zb
         WHERE zb.ID_USER ='".$id_test_user."');";
 
-  $wynik = $baza->query($zapytanie)
+  $wynik = $baza->query($zapytanie);
 
   $ilu_znajomych = $wynik->num_rows;
 
-  while($ilu_znajomych>0){
-      $friend = mysqli_fetch_array($wynik);
+  while($friend = mysqli_fetch_assoc($wynik)){
       echo '<tr>';
       echo '<td>'.$friend['IMIE'].'</td>';
       echo '</tr>';
