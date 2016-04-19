@@ -14,6 +14,7 @@
     </script>
 </head>
 <!-- zmiana -->
+<!-- kolejna zmiana -->
 <?php
 require('connect.php');
 $dbxx = connect_db();
