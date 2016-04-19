@@ -2,21 +2,22 @@
 session_start();
 
 if($_SESSION['zalogowany']){
-    $imie = $_SESSION['imie'];
-    $password = $_SESSION['password'];
-    
     /* ustawienie flagi */
-    $query = @$dbxx->query(sprintf("UPDATE USER SET FLAGA=1 WHERE IMIE='%s' AND PASSWORD='%s'", 
-            mysqli_real_escape_string($dbxx, $imie),
-            mysqli_real_escape_string($dbxx, $password)));
+    if($query = @$dbxx->query(sprintf("UPDATE USER SET FLAGA=true WHERE EMAIL='%s' AND PASSWORD='%s'", 
+            mysqli_real_escape_string($dbxx, $email),
+            mysqli_real_escape_string($dbxx, $password)))){
+    }else{
+    }
     
     if(!empty($_POST['inputmsg'])){
         $godzina = date('H:i:s');
         $wiadomosc = $_POST['inputmsg'];
-
+        $imie = $_SESSION['imie'];
+        
         $_SESSION["dialog"] .= "<tr>"
             . "<td><h5>$imie<br /><small>$godzina</small></h5></td><td>$wiadomosc</td>"
             . "</tr>";
+        header("Location:index.php"); 
     }
 }else if($_SESSION["wylogowany"]){
     unset($_REQUEST);

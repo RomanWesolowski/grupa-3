@@ -29,7 +29,6 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
     if (empty($_SESSION) && $sql = @$dbxx->query(sprintf("SELECT * FROM USER WHERE EMAIL='%s' AND PASSWORD='%s'",
         mysqli_real_escape_string($dbxx, $email),
         mysqli_real_escape_string($dbxx, $password)))){
-        
         $ilu_userow = $sql->num_rows;
         if($ilu_userow>0){
             
@@ -37,16 +36,20 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
             $sid = session_id();
             
             $_SESSION['zalogowany'] = true;
-            $person = mysqli_fetch_assoc($sql);
-                /* z BD mamy:
-                 * ID_USER
-                 * IMIE
-                 * NAZWISKO
-                 * EMAIL
-                 * PASSWORD
-                 * FLAGA
-                 */
             
+            $person = mysqli_fetch_assoc($sql);
+                $id_user = $person['ID_USER'];
+                $imie = $person['IMIE'];
+                $nazwisko = $person['NAZWISKO'];
+                $email = $person['email'];
+                $password = $person['password'];
+                
+                $_SESSION['imie'] = $imie;
+                $_SESSION['nazwisko'] = $nazwisko;
+                $_SESSION['email'] = $email;
+                $_SESSION['password'] = $password;
+                $_SESSION['id_user'] = $id_user;
+                
                 /* z SESSION mamy:
                  * zalogowany
                  * id_user
@@ -72,7 +75,7 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
         $_SESSION["wylogowany"] = true;
     }
 }
-    include('php/msgScript.php');
+    include('msgScript.php');
 ?>
     <body onload="setScrollBottom();">
 
@@ -95,18 +98,18 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
                         <!-- Button to register -->
                         <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#reg">Zarejestruj</button>
    
-                        <?php /*Roman*/ include('php/registerModal.php'); ?>
+                        <?php /*Roman*/ include('registerModal.php'); ?>
                         
                         <!-- Button to log in -->
                         <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
 
-                        <?php /*Roman*/ include('php/loginModal.php'); ?>
+                        <?php /*Roman*/ include('loginModal.php'); ?>
                         
                         <section class="hide">
                             <!-- Button do profilu użytkownika -->
                             <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
                             
-                            <?php /*Roman*/ include('php/profilModal.php'); ?>
+                            <?php /*Roman*/ include('profilModal.php'); ?>
                             
                             <!-- Button to logout -->
                             <button type="button" class="btn btn-primary navbar-btn">Wyloguj</button>
@@ -120,10 +123,10 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
         <div class="container">
             <section class="row">
                 
-                <?php /*Roman*/ include('php/dialog.php'); ?>
+                <?php /*Roman*/ include('dialog.php'); ?>
                 
                 <!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
-                <?php /*Roman*/ include('php/kontakty.php'); ?>
+                <?php /*Roman*/ include('kontakty.php'); ?>
                 
                 <footer class="col-md-12">
             <div class="container text-center" style="color: #FFF">
