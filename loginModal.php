@@ -7,21 +7,22 @@
                 <h4 class="modal-title" id="log">Logowanie</h4>
             </header>
             <div class="modal-body">
-                <form>
+                <form method="post">
                     <div class="form-group">
-                        <label for="InputEmail">Email</label>
-                        <input type="email" class="form-control" id="InputEmail" placeholder="Email">
+                        <label for="email">Email</label>
+                        <input type="text" class="form-control" id="l_email" name="l_email" required>
                     </div>
                     <div class="form-group">
-                        <label for="InputPassword1">Hasło</label>
-                        <input type="password" class="form-control" id="InputPassword1" placeholder="Hasło">
+                        <label for="password">Hasło</label>
+                        <input type="password" class="form-control" id="l_password" name="l_password" required>
+                        <button type="submit" id="submit" class="btn btn-primary">Zaloguj</button> 
+                        <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
+                        <?php
+                            if(isset($_SESSION['blad'])) echo $_SESSION['blad'];
+                        ?>  
                     </div>
                 </form>
             </div>
-            <footer class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Anuluj</button>
-                <button type="submit" class="btn btn-primary">Zaloguj</button>
-            </footer>
         </div>
     </div>
 </section>
