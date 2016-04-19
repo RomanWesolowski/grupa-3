@@ -8,11 +8,11 @@
       WHERE ID_USER IN
         (SELECT za.ID_USER
         FROM ZNAJOMI za
-        WHERE za.ID_ZNAJOMY = '%s')
+        WHERE za.ID_ZNAJOMY = '%d')
       OR ID_USER IN
 	      (SELECT zb.ID_ZNAJOMY
         FROM ZNAJOMI zb
-        WHERE zb.ID_USER = '%s')",
+        WHERE zb.ID_USER = '%d')",
         $id_test_user, $id_test_user
     ));
 
