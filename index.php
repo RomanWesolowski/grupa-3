@@ -13,7 +13,7 @@
         }
     </script>
 </head>
-
+<!-- zmiana -->
 <?php
 require('connect.php');
 $dbxx = connect_db();
