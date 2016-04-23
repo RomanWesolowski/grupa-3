@@ -1,6 +1,8 @@
 <?php
-  require('connect.php');
-  $baza = connect_db();
+function wyswietl_znajomych($id_user)
+{
+  //require('connect.php');
+  $baza=connect_db();
 
   $zapytanie =
       "SELECT IMIE, NAZWISKO FROM USER
@@ -22,4 +24,5 @@
       echo '<td>'.$friend['IMIE'].'</td>';
       echo '</tr>';
   }
+}
  ?>
