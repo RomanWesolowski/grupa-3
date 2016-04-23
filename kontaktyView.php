@@ -16,18 +16,10 @@
             <div class="table-responsive">
                 <table class="table table-hover">
                     <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
-                        <tr>
-                            <td>Andrzej</td>
-                        </tr>
-                        <tr>
-                            <td>Krystian</td>
-                        </tr>
-                        <tr>
-                            <td>Michał</td>
-                        </tr>
-                        <tr>
-                            <td>Roman</td>
-                        </tr>
+                      <?php
+                        require('kontaktyScript.php');
+                        wyswietl_znajomych($_SESSION['id_user']);
+                       ?>
                 </table>
             </div>
         </div>
