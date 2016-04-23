@@ -25,7 +25,6 @@ include('log_rej_wylog/rejestracja.php');
 include('log_rej_wylog/logowanie.php');
 
 include('msgScript.php');
-=======
     $email = htmlentities($email, ENT_QUOTES, "UTF-8");
     $password = htmlentities($password, ENT_QUOTES, "UTF-8");
 
