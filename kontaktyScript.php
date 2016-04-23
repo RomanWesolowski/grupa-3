@@ -15,7 +15,7 @@
 
   $wynik = $baza->query($zapytanie);
 
-  $ilu_znajomych = $wynik->num_rows;
+  //$ilu_znajomych = $wynik->num_rows;
 
   while($friend = mysqli_fetch_assoc($wynik)){
       echo '<tr>';
