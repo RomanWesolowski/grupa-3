@@ -103,8 +103,14 @@ include('msgScript.php');
 
                         <?php /*Roman*/ include('registerModal.php'); ?>
 
-                        <!-- Button to log in -->
-                        <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
+                        <!-- Button to log in/ logoff -->
+                        <?php
+                            if (isset($_SESSION['zalogowany'])) {
+                                echo '<a href="log_rej_wylog/logout.php">Wyloguj<button type="button" class="btn btn-primary navbar-btn">wyloguj</button></a>';
+                            }
+                            else echo'<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>';
+                        ?>
+                        
 
                         <?php /*Roman*/ include('loginModal.php'); ?>
 
@@ -114,8 +120,6 @@ include('msgScript.php');
 
                             <?php /*Roman*/ include('profilModal.php'); ?>
 
-                            <!-- Button to logout -->
-                            <button type="button" class="btn btn-primary navbar-btn">Wyloguj</button>
                         </section>
                     </div>
                 </div>
