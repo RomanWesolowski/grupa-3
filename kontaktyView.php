@@ -17,8 +17,7 @@
                 <table class="table table-hover">
                     <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
                       <?php
-                        require('kontaktyScript.php');
-                        wyswietl_znajomych($_SESSION['id_user']);
+                        
                        ?>
                 </table>
             </div>

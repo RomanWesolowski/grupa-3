@@ -1,9 +1,6 @@
 <?php
-function wyswietl_znajomych($id_user)
+function kontakty($baza, $id_user)
 {
-  //require('connect.php');
-  $baza=connect_db();
-
   $zapytanie =
       "SELECT * FROM USER
       WHERE ID_USER IN
@@ -16,8 +13,6 @@ function wyswietl_znajomych($id_user)
         WHERE zb.ID_USER ='".$id_user."');";
 
   $wynik = $baza->query($zapytanie);
-
-  //$ilu_znajomych = $wynik->num_rows;
 
   while($friend = mysqli_fetch_assoc($wynik)){
     if($friend['FLAGA']==1){
