@@ -6,3 +6,7 @@
     * and open the template in the editor.
     */
 
+    session_start();
+    session_unset();
+    header ('Location: ../index.php');
+?>
