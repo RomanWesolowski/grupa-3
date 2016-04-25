@@ -5,7 +5,7 @@ function wyswietl_znajomych($id_user)
   $baza=connect_db();
 
   $zapytanie =
-      "SELECT IMIE, NAZWISKO FROM USER
+      "SELECT * FROM USER
       WHERE ID_USER IN
         (SELECT za.ID_USER
         FROM ZNAJOMI za
@@ -20,9 +20,16 @@ function wyswietl_znajomych($id_user)
   //$ilu_znajomych = $wynik->num_rows;
 
   while($friend = mysqli_fetch_assoc($wynik)){
+    if($friend['FLAGA']==1){
       echo '<tr>';
-      echo '<td>'.$friend['IMIE'].'</td>';
+      echo '<td>'.$friend['IMIE'].' '.$friend['NAZWISKO'].'</td>';
       echo '</tr>';
+    }
+    else {
+      echo '<tr>';
+      echo '<td style="color : red;">'.$friend['IMIE'].' '.$friend['NAZWISKO'].'</td>';
+      echo '</tr>';
+    }
   }
 }
  ?>

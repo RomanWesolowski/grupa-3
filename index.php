@@ -76,7 +76,7 @@ include('msgScript.php');
         $_SESSION["zalogowany"] = false;
         $_SESSION["wylogowany"] = true;
     }
-}
+
     include('msgScript.php');
 
 ?>
