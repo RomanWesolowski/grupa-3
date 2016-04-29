@@ -77,23 +77,24 @@ include('msgScript.php');
                 <?php /*Roman*/ include('dialog.php'); ?>
 
                 <!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
-
                 <?php
-                  include('kontakty.php');
+                  include('kontaktyView.php');
                 ?>
 
 
+
                 <footer class="col-md-12">
-            <div class="container text-center" style="color: #FFF">
-                <hr>
-                <script type="text/javascript">
-                    var d = new Date();
-                    var n = d.getFullYear();
-                    document.write("All rights reserved Gadaczek &copy; "+n);
-                </script>
-            </div>
-            <div><br /></div>
-        </footer>
+                    <div class="container text-center" style="color: #FFF">
+                        <hr>
+                        <script type="text/javascript">
+                          var d = new Date();
+                          var n = d.getFullYear();
+                          document.write("All rights reserved Gadaczek &copy; "+n);
+                          </script>
+                    </div>
+
+                    <div><br /></div>
+                </footer>
             </section>
         </div>
 
@@ -107,6 +108,7 @@ include('msgScript.php');
             document.getElementById('bmone2n-1276.1.1.1').id = "reklama";
             document.getElementById('bmone2t-1276.1.1.1').id = "reklama";
         </script>
+
 
     </body>
 </html>
