@@ -18,7 +18,7 @@
                   <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
                     <?php
                       session_start();
-                      require_once('kontaktyScript.php')
+                      require_once('kontaktyScript.php');
                       if($_SESSION['zalogowany'])
                         kontakty($_SESSION['id_user'], $dbxx);
                      ?>
