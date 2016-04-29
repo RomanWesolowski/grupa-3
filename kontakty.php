@@ -21,7 +21,7 @@
                     <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
                       <?php
                         if($_SESSION['zalogowany'])
-                          kontakty($_SESSION['id_user']);
+                          kontakty($_SESSION['id_user'], $dbxx);
                        ?>
                 </table>
             </div>
@@ -30,11 +30,8 @@
 </aside>
 
 <?php
-function kontakty($id_user)
+function kontakty($id_user, $baza)
 {
-
-  $baza = connect_db();
-
   $zapytanie =
       "SELECT * FROM USER
       WHERE ID_USER IN
