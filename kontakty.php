@@ -1,6 +1,3 @@
-<?php
-  session_start();
-?>
 <aside class="col-sm-12 col-md-offset-1 col-md-3">
     <div class="panel panel-primary">
         <div class="panel-heading">
@@ -20,6 +17,7 @@
                 <table class="table table-hover">
                     <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
                       <?php
+                        session_start();
                         if($_SESSION['zalogowany'])
                           kontakty($_SESSION['id_user'], $dbxx);
                        ?>
