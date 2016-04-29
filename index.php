@@ -52,6 +52,8 @@ include('msgScript.php');
                 $_SESSION['password'] = $password;
                 $_SESSION['id_user'] = $id_user;
 
+                $_SESSION['db'] = $dbxx;
+
                 /* z SESSION mamy:
                  * zalogowany
                  * id_user
@@ -110,7 +112,7 @@ include('msgScript.php');
                             }
                             else echo'<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>';
                         ?>
-                        
+
 
                         <?php /*Roman*/ include('loginModal.php'); ?>
 
@@ -153,8 +155,6 @@ include('msgScript.php');
                                     <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
                                       <?php
                                         include('kontakty.php');
-                                        kontakty($dbxx, $_SESSION['id_user']);
-                                        //kontakty($dbxx, 3); //TEST
                                       ?>
                                 </table>
                             </div>
