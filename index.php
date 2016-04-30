@@ -111,6 +111,14 @@ include('msgScript.php');
         </script>
 
         <!--Refreshing content -->
+        <script>
+          $(document).ready(
+            setInterval(function(){
+              $("#friends-list").load("kontaktyScript.php");
+            }
+            ,1000)
+          );
+        </script>
 
     </body>
 </html>

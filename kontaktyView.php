@@ -22,13 +22,3 @@
       </div>
   </div>
 </aside>
-
-<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
-<script>
-  $(document).ready(
-    setInterval(function(){
-      $("#friends-list").load("kontaktyScript.php");
-    }
-    ,1000)
-  );
-</script>
