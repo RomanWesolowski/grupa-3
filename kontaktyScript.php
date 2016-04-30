@@ -1,6 +1,8 @@
 <?php
-function kontakty($id_user, $baza)
-{
+include('connect.php');
+
+function kontakty($id_user)
+{  
   $zapytanie =
       "SELECT * FROM USER
       WHERE ID_USER IN
@@ -12,6 +14,8 @@ function kontakty($id_user, $baza)
         FROM ZNAJOMI zb
         WHERE zb.ID_USER ='".$id_user."');";
 
+
+  $baza = connect_db();
   $wynik = $baza->query($zapytanie);
 
   while($friend = mysqli_fetch_assoc($wynik)){

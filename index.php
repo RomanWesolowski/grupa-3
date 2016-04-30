@@ -76,10 +76,11 @@ include('msgScript.php');
 
                 <?php /*Roman*/ include('dialog.php'); ?>
 
-                <!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
-                <?php
-                  include('kontaktyView.php');
-                ?>
+                <div id="kontakty"><!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
+                  <?php
+                    //include('kontaktyView.php');
+                  ?>
+                </div>
 
 
 
@@ -109,6 +110,16 @@ include('msgScript.php');
             document.getElementById('bmone2t-1276.1.1.1').id = "reklama";
         </script>
 
+        <!--Refreshing content -->
+        <script>
+          $(document).ready(
+            setInterval(function(){
+              $('#kontakty').load('kontaktyView.php');
+            }
+            ,2000)
+          );
+
+        </script>
 
     </body>
 </html>
