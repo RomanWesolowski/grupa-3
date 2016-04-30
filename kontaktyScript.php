@@ -1,8 +1,12 @@
 <?php
-include('connect.php');
+session_start();
+if($_SESSION['zalogowany']){
+  kontakty($_SESSION['id_user']);
+}
 
 function kontakty($id_user)
-{  
+{
+  require_once('connect.php');
   $zapytanie =
       "SELECT * FROM USER
       WHERE ID_USER IN

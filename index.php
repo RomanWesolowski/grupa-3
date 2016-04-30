@@ -78,7 +78,7 @@ include('msgScript.php');
 
                 <div id="kontakty"><!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
                   <?php
-                    //include('kontaktyView.php');
+                    include('kontaktyView.php');
                   ?>
                 </div>
 
@@ -111,15 +111,6 @@ include('msgScript.php');
         </script>
 
         <!--Refreshing content -->
-        <script>
-          $(document).ready(
-            setInterval(function(){
-              $('#kontakty').load('kontaktyView.php');
-            }
-            ,2000)
-          );
-
-        </script>
 
     </body>
 </html>

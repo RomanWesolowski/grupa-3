@@ -12,18 +12,23 @@
           </div>
           </div>
       </div>
-      <div id="lista-kontaktow" class="panel-body over">
+      <div class="panel-body over">
           <div class="table-responsive">
-              <table class="table table-hover">
+              <table id="friends-list" class="table table-hover">
                   <!-- Przykład, obok imienia będą wyświetlały się ilość wiadomości nieprzeczytanych -->
-                    <?php
-                      session_start();
-                      include('kontaktyScript.php');
-                      if($_SESSION['zalogowany'])
-                        kontakty($_SESSION['id_user']);
-                     ?>
+
               </table>
           </div>
       </div>
   </div>
 </aside>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+<script>
+  $(document).ready(
+    setInterval(function(){
+      $("#friends-list").load("kontaktyScript.php");
+    }
+    ,1000)
+  );
+</script>
