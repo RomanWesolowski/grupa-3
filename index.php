@@ -20,68 +20,10 @@ $dbxx = connect_db();
 
 
 include('log_rej_wylog/rejestracja.php');
-
-
 include('log_rej_wylog/logowanie.php');
-
 include('msgScript.php');
-    $email = htmlentities($email, ENT_QUOTES, "UTF-8");
-    $password = htmlentities($password, ENT_QUOTES, "UTF-8");
-
-    if (empty($_SESSION) && $sql = @$dbxx->query(sprintf("SELECT * FROM USER WHERE EMAIL='%s' AND PASSWORD='%s'",
-        mysqli_real_escape_string($dbxx, $email),
-        mysqli_real_escape_string($dbxx, $password)))){
-        $ilu_userow = $sql->num_rows;
-        if($ilu_userow>0){
-
-            session_start();
-            $sid = session_id();
-
-            $_SESSION['zalogowany'] = true;
-
-            $person = mysqli_fetch_assoc($sql);
-                $id_user = $person['ID_USER'];
-                $imie = $person['IMIE'];
-                $nazwisko = $person['NAZWISKO'];
-                $email = $person['email'];
-                $password = $person['password'];
-
-                $_SESSION['imie'] = $imie;
-                $_SESSION['nazwisko'] = $nazwisko;
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['id_user'] = $id_user;
-
-                $_SESSION['db'] = $dbxx;
-
-                /* z SESSION mamy:
-                 * zalogowany
-                 * id_user
-                 * imie
-                 * nazwisko
-                 * email
-                 * dialog - tu jest cala rozmowa
-                 */
-
-                /* z POST mamy:
-                 * l_email
-                 * l_password
-                 */
-
-                 /* zmienne:
-                  * $sid - tu jest id sesji
-                  */
-
-        }
-    }
-    if($_POST['wylogowany']){
-        $_SESSION["zalogowany"] = false;
-        $_SESSION["wylogowany"] = true;
-    }
-
-    include('msgScript.php');
-
 ?>
+
     <body onload="setScrollBottom();">
 
         <nav class="navbar navbar-inverse">
@@ -134,24 +76,26 @@ include('msgScript.php');
 
                 <?php /*Roman*/ include('dialog.php'); ?>
 
-                <!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
+                <div id="kontakty"><!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
+                  <?php
+                    include('kontaktyView.php');
+                  ?>
+                </div>
 
-                <?php
-                  include('kontakty.php');
-                ?>
 
 
                 <footer class="col-md-12">
-            <div class="container text-center" style="color: #FFF">
-                <hr>
-                <script type="text/javascript">
-                    var d = new Date();
-                    var n = d.getFullYear();
-                    document.write("All rights reserved Gadaczek &copy; "+n);
-                </script>
-            </div>
-            <div><br /></div>
-        </footer>
+                    <div class="container text-center" style="color: #FFF">
+                        <hr>
+                        <script type="text/javascript">
+                          var d = new Date();
+                          var n = d.getFullYear();
+                          document.write("All rights reserved Gadaczek &copy; "+n);
+                          </script>
+                    </div>
+
+                    <div><br /></div>
+                </footer>
             </section>
         </div>
 
@@ -164,6 +108,16 @@ include('msgScript.php');
         <script>
             document.getElementById('bmone2n-1276.1.1.1').id = "reklama";
             document.getElementById('bmone2t-1276.1.1.1').id = "reklama";
+        </script>
+
+        <!--Refreshing content -->
+        <script>
+          $(document).ready(
+            setInterval(function(){
+              $("#friends-list").load("kontaktyScript.php");
+            }
+            ,1000)
+          );
         </script>
 
     </body>
