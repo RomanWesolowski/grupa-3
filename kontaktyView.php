@@ -4,14 +4,61 @@
           <div class="row">
           <div class="col-xs-4 col-sm-3 col-md-2 col-lg-3"><h4>Kontakty</h4></div>
           <div class="col-xs-offset-1 col-xs-7  col-sm-offset-5 col-sm-3 col-md-offset-2 col-md-5 col-lg-offset-2 col-lg-5">
-          <form class="form-inline hidden">
-              <div class="form-group">
-                  <input type="search" class="form-control" id="search" placeholder="Szukaj znajomego">
+          </div>
+          </div>
+
+          <div class="row">
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-default navbar-btn btn-sm" data-toggle="modal" data-target="#modalDodajZnajomy">Dodaj</button>
+
+            <!-- Modal -->
+            <div id="modalDodajZnajomy" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
               </div>
-          </form>
+            </div>
+
+            <!-- Trigger the modal with a button -->
+            <button type="button" class="btn btn-default navbar-btn btn-sm" data-toggle="modal" data-target="#modalUsunZnajomy">Usun</button>
+
+            <!-- Modal -->
+            <div id="modalUsunZnajomy" class="modal fade" role="dialog">
+              <div class="modal-dialog">
+
+                <!-- Modal content-->
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">Modal Header</h4>
+                  </div>
+                  <div class="modal-body">
+                    <p>Some text in the modal.</p>
+                  </div>
+                  <div class="modal-footer">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                  </div>
+                </div>
+
+              </div>
+            </div>
           </div>
-          </div>
+
       </div>
+
       <div class="panel-body over">
           <div class="table-responsive">
               <table id="friends-list" class="table table-hover">
