@@ -12,9 +12,9 @@ function kontakty($id_user)
       WHERE ID_USER IN
         (SELECT za.ID_USER
         FROM ZNAJOMI za
-        WHERE za.ID_ZNAJOMY = '".$id_user."')".
+        WHERE za.ID_USER2 = '".$id_user."')".
       "OR ID_USER IN
-  	    (SELECT zb.ID_ZNAJOMY
+  	    (SELECT zb.ID_USER2
         FROM ZNAJOMI zb
         WHERE zb.ID_USER ='".$id_user."');";
 
