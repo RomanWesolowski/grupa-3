@@ -110,15 +110,5 @@ include('msgScript.php');
             document.getElementById('bmone2t-1276.1.1.1').id = "reklama";
         </script>
 
-        <!--Refreshing content -->
-        <script>
-          $(document).ready(
-            setInterval(function(){
-              $("#friends-list").load("kontaktyScript.php");
-            }
-            ,1000)
-          );
-        </script>
-
     </body>
 </html>
