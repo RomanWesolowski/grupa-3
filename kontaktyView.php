@@ -7,60 +7,55 @@
           </div>
           </div>
 
-          <div class="row">
-            <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-default navbar-btn btn-sm" data-toggle="modal" data-target="#modalDodajZnajomy">Dodaj</button>
+          <div class="row" style="color:black">
+            <!-- Button trigger modal -->
+            <button type="button" class="btn" data-toggle="modal" data-target="#modalDodawanieZnajomego">
+              Dodaj
+            </button>
 
             <!-- Modal -->
-            <div id="modalDodajZnajomy" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
+            <div class="modal fade" id="modalDodawanieZnajomego" tabindex="-1" role="dialog" aria-labelledby="modalDodawanieZnajomegoLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalDodawanieZnajomegoLabel">Dodawanie znajomego</h4>
                   </div>
                   <div class="modal-body">
-                    <div class="form-group">
-                      <label for="email">Email address:</label>
-                      <input id="emailZnajomy" type="email" class="form-control">
-                    </div>
+
                   </div>
                   <div class="modal-footer">
-                    <button id="btnDodajZnajomy" type="button" class="btn btn-success">Dodaj</button>
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btnDodajZnajomego" onclick=''>Dodaj</button>
+                    <button type="button" class="closeBtn" onclick='' data-dismiss="modal">Zamknij</button>
                   </div>
                 </div>
-
               </div>
             </div>
 
-            <!-- Trigger the modal with a button -->
-            <button type="button" class="btn btn-default navbar-btn btn-sm" data-toggle="modal" data-target="#modalUsunZnajomy">Usun</button>
+            <!-- Button trigger modal -->
+            <button type="button" class="btn" data-toggle="modal" data-target="#modalUsuwanieZnajomego">
+              Usun
+            </button>
 
             <!-- Modal -->
-            <div id="modalUsunZnajomy" class="modal fade" role="dialog">
-              <div class="modal-dialog">
-
-                <!-- Modal content-->
+            <div class="modal fade" id="modalUsuwanieZnajomego" tabindex="-1" role="dialog" aria-labelledby="modalUsuwanieZnajomegoLabel" aria-hidden="true">
+              <div class="modal-dialog modal-sm">
                 <div class="modal-content">
                   <div class="modal-header">
-                    <button type="button" class="close" data-dismiss="modal">&times;</button>
-                    <h4 class="modal-title">Modal Header</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                    <h4 class="modal-title" id="modalUsuwanieZnajomegoLabel">Usuwanie znajomego</h4>
                   </div>
                   <div class="modal-body">
-                    <p>Some text in the modal.</p>
+
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="button" class="btnUsunZnajomego" onclick=''>Usun</button>
+                    <button type="button" class="closeBtn" onclick='' data-dismiss="modal">Zamknij</button>
                   </div>
                 </div>
-
               </div>
             </div>
           </div>
-
       </div>
 
       <div class="panel-body over">
