@@ -90,7 +90,7 @@ function dz(){
    var dataString = 'email1='+ email + '&funkcja=' + funkcja;
   $.ajax({
     type: "POST",
-    url: "kontaktyScript.php",
+    url: "manageKontakty.php",
     data: dataString,
     cache: false,
     success: function(result){
