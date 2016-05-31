@@ -30,7 +30,7 @@
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button type="button" class="btnDodajZnajomego" onclick=''>Dodaj</button>
+                    <button id="#btnDodajZnajomego" type="button" class="btn btn-primary btn-sm">Dodaj</button>
                     <button type="button" class="closeBtn" onclick='' data-dismiss="modal">Zamknij</button>
                   </div>
                 </div>
@@ -83,4 +83,22 @@
     }
     ,1000)
   );
+</script>
+
+<script>
+$(document).ready(function(){
+  $("#btnDodajZnajomego").click(function(){
+    var email = $("#emailZnajomego").val();
+    $.ajax({
+      type: "POST",
+      url: "kontaktyScript.php",
+      data: email,
+      cache: false,
+      success: function(result){
+        alert(result);
+      }
+    });
+  }
+});
+
 </script>
