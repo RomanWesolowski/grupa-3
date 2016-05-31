@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="pl">
 <head>
@@ -13,14 +14,11 @@
         }
     </script>
 </head>
-
 <?php
 require('connect.php');
 $dbxx = connect_db();
-
 include('msgScript.php');
 ?>
-
     <body onload="setScrollBottom();">
 
         <nav class="navbar navbar-inverse">
@@ -38,28 +36,12 @@ include('msgScript.php');
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="nav navbar-nav navbar-right">
                         <!-- Przy zalogowanym użytkowniku będzie widać tylko nazwa i wyloguj w postaci button'ów -->
-
-                        <!-- Button to register -->
-                        <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#reg">Zarejestruj</button>
-
-                        <?php /*Roman*/ include('registerModal.php'); ?>
-
-                        <!-- Button to log in/ logoff -->
-                        <?php
-                            if (isset($_SESSION['zalogowany'])) {
-                                echo '<a href="log_rej_wylog/logout.php">Wyloguj<button type="button" class="btn btn-primary navbar-btn">wyloguj</button></a>';
-                            }
-                            else echo'<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>';
-                        ?>
-
-
-                        <?php /*Roman*/ include('loginModal.php'); ?>
+                        <a href="logout.php"><button type="button" class="btn btn-primary navbar-btn">Wyloguj</button></a>
 
                         <section class="hide">
                             <!-- Button do profilu użytkownika -->
                             <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
 
-                            <?php /*Roman*/ include('profilModal.php'); ?>
 
                         </section>
                     </div>
