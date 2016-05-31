@@ -1,5 +1,15 @@
 <?php
 session_start();
+
+  if($_POST['funkcja']=='dz'){
+    echo 'super dziala';
+  }
+/*
+if(!empty($_POST['email1'])){
+  dodajZnajomego();
+}
+*/
+
 if($_SESSION['zalogowany']){
   kontakty($_SESSION['ID_USER']);
 }

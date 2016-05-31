@@ -85,15 +85,16 @@
   );
 
 function dz(){
+  var funkcja = 'dz';
   var email = $("#emailZnajomego").val();
-
+   var dataString = 'email1='+ email + '&funkcja=' + funkcja;
   $.ajax({
     type: "POST",
     url: "kontaktyScript.php",
-    data: { email1 : email },
+    data: dataString,
     cache: false,
     success: function(result){
-      alert(email);
+      alert(result);
     }
   });
 };
