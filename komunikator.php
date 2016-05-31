@@ -18,9 +18,6 @@
 require('connect.php');
 $dbxx = connect_db();
 
-
-include('log_rej_wylog/rejestracja.php');
-include('log_rej_wylog/logowanie.php');
 include('msgScript.php');
 ?>
 
