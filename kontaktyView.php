@@ -22,9 +22,13 @@
                     <h4 class="modal-title">Modal Header</h4>
                   </div>
                   <div class="modal-body">
-                    <p>Some text in the modal.</p>
+                    <div class="form-group">
+                      <label for="email">Email address:</label>
+                      <input id="emailZnajomy" type="email" class="form-control">
+                    </div>
                   </div>
                   <div class="modal-footer">
+                    <button id="btnDodajZnajomy" type="button" class="btn btn-success">Dodaj</button>
                     <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
                   </div>
                 </div>
@@ -71,6 +75,7 @@
 </aside>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
+
 <script>
   $(document).ready(
     setInterval(function(){
