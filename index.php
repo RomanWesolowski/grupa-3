@@ -18,65 +18,12 @@
 require('connect.php');
 $dbxx = connect_db();
 
-if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
 
-    $email = $_POST['l_email'];
-    $password = $_POST['l_password'];
-
-    $email = htmlentities($email, ENT_QUOTES, "UTF-8");
-    $password = htmlentities($password, ENT_QUOTES, "UTF-8");
-    
-    if (empty($_SESSION) && $sql = @$dbxx->query(sprintf("SELECT * FROM USER WHERE EMAIL='%s' AND PASSWORD='%s'",
-        mysqli_real_escape_string($dbxx, $email),
-        mysqli_real_escape_string($dbxx, $password)))){
-        $ilu_userow = $sql->num_rows;
-        if($ilu_userow>0){
-            
-            session_start(); 
-            $sid = session_id();
-            
-            $_SESSION['zalogowany'] = true;
-            
-            $person = mysqli_fetch_assoc($sql);
-                $id_user = $person['ID_USER'];
-                $imie = $person['IMIE'];
-                $nazwisko = $person['NAZWISKO'];
-                $email = $person['email'];
-                $password = $person['password'];
-                
-                $_SESSION['imie'] = $imie;
-                $_SESSION['nazwisko'] = $nazwisko;
-                $_SESSION['email'] = $email;
-                $_SESSION['password'] = $password;
-                $_SESSION['id_user'] = $id_user;
-                
-                /* z SESSION mamy:
-                 * zalogowany
-                 * id_user
-                 * imie
-                 * nazwisko
-                 * email
-                 * dialog - tu jest cala rozmowa
-                 */
-            
-                /* z POST mamy:
-                 * l_email
-                 * l_password
-                 */
-            
-                 /* zmienne:
-                  * $sid - tu jest id sesji
-                  */
-            
-        }
-    }
-    if($_POST['wylogowany']){
-        $_SESSION["zalogowany"] = false;
-        $_SESSION["wylogowany"] = true;
-    }
-}
-    include('msgScript.php');
+include('log_rej_wylog/rejestracja.php');
+include('log_rej_wylog/logowanie.php');
+include('msgScript.php');
 ?>
+
     <body onload="setScrollBottom();">
 
         <nav class="navbar navbar-inverse">
@@ -94,56 +41,66 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <div class="nav navbar-nav navbar-right">
                         <!-- Przy zalogowanym użytkowniku będzie widać tylko nazwa i wyloguj w postaci button'ów -->
-                        
+
                         <!-- Button to register -->
                         <button type="button" class="btn btn-default navbar-btn" data-toggle="modal" data-target="#reg">Zarejestruj</button>
-   
+
                         <?php /*Roman*/ include('registerModal.php'); ?>
-                        
-                        <!-- Button to log in -->
-                        <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
+
+                        <!-- Button to log in/ logoff -->
+                        <?php
+                            if (isset($_SESSION['zalogowany'])) {
+                                echo '<a href="log_rej_wylog/logout.php">Wyloguj<button type="button" class="btn btn-primary navbar-btn">wyloguj</button></a>';
+                            }
+                            else echo'<button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>';
+                        ?>
+
 
                         <?php /*Roman*/ include('loginModal.php'); ?>
-                        
+
                         <section class="hide">
                             <!-- Button do profilu użytkownika -->
                             <button type="button" class="btn btn-primary navbar-btn" data-toggle="modal" data-target="#login">Zaloguj</button>
-                            
+
                             <?php /*Roman*/ include('profilModal.php'); ?>
-                            
-                            <!-- Button to logout -->
-                            <button type="button" class="btn btn-primary navbar-btn">Wyloguj</button>
+
                         </section>
                     </div>
                 </div>
             </div>
         </nav>
-        
+
         <!-- Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa Rozmowa -->
         <div class="container">
             <section class="row">
-                
+
                 <?php /*Roman*/ include('dialog.php'); ?>
-                
-                <!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
-                <?php /*Roman*/ include('kontakty.php'); ?>
-                
+
+                <div id="kontakty"><!-- Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty Kontakty -->
+                  <?php
+                    include('kontaktyView.php');
+                  ?>
+                </div>
+
+
+
                 <footer class="col-md-12">
-            <div class="container text-center" style="color: #FFF">
-                <hr>
-                <script type="text/javascript">
-                    var d = new Date();
-                    var n = d.getFullYear();
-                    document.write("All rights reserved Gadaczek &copy; "+n);
-                </script>
-            </div>
-            <div><br /></div>
-        </footer>
+                    <div class="container text-center" style="color: #FFF">
+                        <hr>
+                        <script type="text/javascript">
+                          var d = new Date();
+                          var n = d.getFullYear();
+                          document.write("All rights reserved Gadaczek &copy; "+n);
+                          </script>
+                    </div>
+
+                    <div><br /></div>
+                </footer>
             </section>
         </div>
-        
-        
-        
+
+
+
         <!-- jQuery (necessary for Bootstrap's JavaScript plugins) -->
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
         <!-- Include all compiled plugins (below), or include individual files as needed -->
@@ -151,6 +108,16 @@ if(!empty($_POST['l_password']) && !empty($_POST['l_email'])){
         <script>
             document.getElementById('bmone2n-1276.1.1.1').id = "reklama";
             document.getElementById('bmone2t-1276.1.1.1').id = "reklama";
+        </script>
+
+        <!--Refreshing content -->
+        <script>
+          $(document).ready(
+            setInterval(function(){
+              $("#friends-list").load("kontaktyScript.php");
+            }
+            ,1000)
+          );
         </script>
 
     </body>
