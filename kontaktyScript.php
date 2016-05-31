@@ -1,7 +1,7 @@
 <?php
 session_start();
 if($_SESSION['zalogowany']){
-  kontakty($_SESSION['id_user']);
+  kontakty($_SESSION['ID_USER']);
 }
 
 function kontakty($id_user)
