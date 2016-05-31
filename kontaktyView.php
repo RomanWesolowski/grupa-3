@@ -25,12 +25,12 @@
                     <form role="form">
                       <div class="form-group">
                         <label for="email">Email znajomego:</label>
-                        <input type="email" class="form-control" id="#emailZnajomego" placeholder="Enter email">
+                        <input type="email" class="form-control" id="emailZnajomego" placeholder="Enter email">
                       </div>
                     </form>
                   </div>
                   <div class="modal-footer">
-                    <button id="#btnDodajZnajomego" type="button" class="btn btn-primary btn-sm">Dodaj</button>
+                    <button id="#btnDodajZnajomego" type="button" onclick='dz()' class="btn btn-primary btn-sm">Dodaj</button>
                     <button type="button" class="closeBtn" onclick='' data-dismiss="modal">Zamknij</button>
                   </div>
                 </div>
@@ -83,22 +83,18 @@
     }
     ,1000)
   );
-</script>
 
-<script>
-$(document).ready(function(){
-  $("#btnDodajZnajomego").click(function(){
-    var email = $("#emailZnajomego").val();
-    $.ajax({
-      type: "POST",
-      url: "kontaktyScript.php",
-      data: email,
-      cache: false,
-      success: function(result){
-        alert(result);
-      }
-    });
-  }
-});
+function dz(){
+  var email = $("#emailZnajomego").val();
 
+  $.ajax({
+    type: "POST",
+    url: "kontaktyScript.php",
+    data: { email1 : email },
+    cache: false,
+    success: function(result){
+      alert(email);
+    }
+  });
+};
 </script>
