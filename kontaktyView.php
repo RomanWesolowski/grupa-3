@@ -22,7 +22,12 @@
                     <h4 class="modal-title" id="modalDodawanieZnajomegoLabel">Dodawanie znajomego</h4>
                   </div>
                   <div class="modal-body">
-
+                    <form role="form">
+                      <div class="form-group">
+                        <label for="email">Email znajomego:</label>
+                        <input type="email" class="form-control" id="#emailZnajomego" placeholder="Enter email">
+                      </div>
+                    </form>
                   </div>
                   <div class="modal-footer">
                     <button type="button" class="btnDodajZnajomego" onclick=''>Dodaj</button>
