@@ -70,3 +70,24 @@ footer div{
 .panel-body table tr:second-child td{
     float:left;
 }
+
+.center {
+    position: absolute;
+    top: 20%;
+    right: 7%;
+    height: 600px;
+    width: 86%;
+}
+.center-error {
+    position: absolute;
+    top: 45%;
+    left: 26%;
+    width: 46%;
+    text-align: center;
+}
+@media (max-width: 768px) {
+    .center {
+        top: 6%;
+        height: 850px;
+    }
+}
