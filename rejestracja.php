@@ -272,6 +272,8 @@
                 
                 <input type="submit" class="btn btn-primary" value="Zarejestruj się" />        
             </form>
+                        <br />
+            <a href="index.php"><button class="btn btn-primary"> Strona Główna </button></a> 
         </div>
     </section>
 
