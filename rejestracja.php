@@ -144,7 +144,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1" />
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="main.css">
+    <link rel="stylesheet" href="css/main.css">
     <title>Gadaczek rejestracja</title>
 
     
@@ -272,18 +272,11 @@
                 
                 <input type="submit" class="btn btn-primary" value="Zarejestruj się" />        
             </form>
+                        <br />
+            <a href="index.php"><button class="btn btn-primary"> Strona Główna </button></a> 
         </div>
     </section>
 
-<footer style="bottom: 0px; position: fixed; width: 100%; padding-bottom: 15px; background-color: #222; margin-top: 80px;">
-        <div class="container text-center">
-            <hr />
-            <script type="text/javascript">
-               var d = new Date();
-               var n = d.getFullYear();
-               document.write("All rights reserved Gadaczek &copy;" +n)
-            </script>
-        </div>
-   </footer>
+
 </body>
 </html>
