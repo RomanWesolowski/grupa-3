@@ -1,5 +1,6 @@
 <?php
 session_start();
+
 if($_SESSION['zalogowany']){
   kontakty($_SESSION['ID_USER']);
 }
