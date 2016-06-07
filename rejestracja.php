@@ -275,15 +275,6 @@
         </div>
     </section>
 
-<footer style="bottom: 0px; position: fixed; width: 100%; padding-bottom: 15px; background-color: #222; margin-top: 80px;">
-        <div class="container text-center">
-            <hr />
-            <script type="text/javascript">
-               var d = new Date();
-               var n = d.getFullYear();
-               document.write("All rights reserved Gadaczek &copy;" +n)
-            </script>
-        </div>
-   </footer>
+
 </body>
 </html>
